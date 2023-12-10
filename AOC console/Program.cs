@@ -26,10 +26,10 @@ class Program
             Console.WriteLine("A general exception has been thrown!");
             Console.WriteLine(e.ToString());
         }
-        
-        
-        
-        
+
+
+        Stopwatch stopwatch = new Stopwatch();
+        stopwatch.Start();
         
         ArrayList numbers = new ArrayList();
         foreach (var line in content)
@@ -158,6 +158,10 @@ class Program
         {
             total += number;
         }
+        
+        
+        stopwatch.Stop();
+        Console.WriteLine($"Time elapsed: {stopwatch.Elapsed}");
         Console.WriteLine(total);
         
     }

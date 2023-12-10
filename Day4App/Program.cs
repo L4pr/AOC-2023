@@ -3,6 +3,7 @@
 
 
 using System.Collections;
+using System.Diagnostics;
 
 class Program
 {
@@ -31,6 +32,9 @@ class Program
             Console.WriteLine(e.ToString());
         }
 
+        Stopwatch stopwatch = new Stopwatch();
+        stopwatch.Start();
+        
         ArrayList TicketsPerCard = new ArrayList();
         for (int i = 0; i < content.Length; i++)
         {
@@ -99,7 +103,11 @@ class Program
             TotalTickets += (int)TicketsCard;
         }
 
+        
+        stopwatch.Stop();
+        
         Console.WriteLine(TotalTickets);
+        Console.WriteLine($"Time elapsed: {stopwatch.Elapsed}");
 
 
     }

@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System.Text.RegularExpressions;
 
 namespace Day6App;
@@ -28,6 +29,8 @@ public class part2
             Console.WriteLine(e.ToString());
         }
 
+        Stopwatch stopwatch = new Stopwatch();
+        stopwatch.Start();
 
         string timeString = "";
         string distanceString = "";
@@ -36,21 +39,23 @@ public class part2
             timeString = timeString + Regex.Split(content[0], @"\s+")[i];
             distanceString = distanceString + Regex.Split(content[1], @"\s+")[i];
         }
+        
 
         long time = long.Parse(timeString);
         long distance = long.Parse(distanceString);
 
+        
 
-        long scorePerTime = 0;
-        for (long j = 0; j <= time; j++)
-        {
-            long distanceTraveled = (time - j) * j;
-            if (distanceTraveled > distance)
-            {
-                scorePerTime += 1;
-            }
-        }
+        // long rightSide = (long)Math.Ceiling(time + Math.Sqrt((time * time) - (4 * distance)) / 2);
+        // long leftSide = (long)Math.Floor(time - Math.Sqrt((time * time) - (4 * distance)) / 2);
 
-        Console.WriteLine(scorePerTime);
+        long score = ((long)Math.Ceiling(time + Math.Sqrt((time * time) - (4 * distance)) / 2)) - ((long)Math.Floor(time - Math.Sqrt((time * time) - (4 * distance)) / 2));
+        
+
+        
+        stopwatch.Stop();
+        
+        Console.WriteLine(score);
+        Console.WriteLine($"Time elapsed: {stopwatch.Elapsed}");
     }
 }

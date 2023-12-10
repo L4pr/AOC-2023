@@ -1,5 +1,7 @@
 ﻿
 
+using System.Diagnostics;
+
 class Program
 {
     static void Main(string[] args)
@@ -23,6 +25,9 @@ class Program
             Console.WriteLine("A general exception has been thrown!");
             Console.WriteLine(e.ToString());
         }
+
+        Stopwatch stopwatch = new Stopwatch();
+        stopwatch.Start();
 
         int totalScore = 0;
         
@@ -78,6 +83,8 @@ class Program
             // }
         }
         
+        stopwatch.Stop();
+        Console.WriteLine($"Time elapsed: {stopwatch.Elapsed}");
         Console.WriteLine("total score: " + totalScore);
     }
 }
